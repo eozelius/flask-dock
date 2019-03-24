@@ -1,6 +1,5 @@
 FROM ubuntu:latest
 FROM python:3.7.2
-FROM node:lts-alpine
 
 # Ubuntu dependencies
 RUN apt-get update -y
@@ -11,9 +10,6 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 RUN python --version
-
-# Vue dependencies
-
 
 EXPOSE 5000
 

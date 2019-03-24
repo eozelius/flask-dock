@@ -1,8 +1,21 @@
-web:
-  build: ./web
-  ports:
-   - "5000:5000"
-  volumes:
-   - .:/code
-  environment:
-    - FLASK_ENV=development
+services:
+  flask:
+    build: ./flask
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    volumes:
+      ./flask:/home/ethan/docker-flask-apps/flask-dock/flask/web/app
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+  vue:
+    build: .vue/minesweeper
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./vue/minesweeper/src:/home/ethan/docker-flask-apps/flask-dock/vue/minesweeper/src
+      - ./vue/minesweeper/public:/home/ethan/docker-flask-apps/flask-dock/vue/minesweeper/public
