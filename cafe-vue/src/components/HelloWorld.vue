@@ -1,5 +1,10 @@
 <template>
   <div class="hello">
+    <div class="flask-container">
+      <h2>This data was retrieved from Flask</h2>
+      <p>{{ this.flask }}</p>
+    </div>
+    
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -32,14 +37,25 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
 
+  data: function () {
+    return {
+      flask: 'loading - sending request to Flask.'
+    }
+  },
+
   mounted() {
-    alert('mounted')
+    axios('http://localhost:5000/').then(response => {
+      console.log(response)
+      this.flask = JSON.stringify(response)
+    })
   }
 }
 </script>
