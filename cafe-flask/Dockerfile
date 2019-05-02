@@ -9,10 +9,10 @@ RUN apt-get install -y python-pip python-dev build-essential
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-RUN python --version
 
 EXPOSE 5000
 
-ENV FLASK_ENV development
+ENV FLASK_ENV "development"
+ENV FRONTEND_IP "http://104.156.227.73:8080"
 ENTRYPOINT ["python"]
 CMD ["app.py"]
