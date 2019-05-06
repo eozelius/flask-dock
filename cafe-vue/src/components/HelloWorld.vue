@@ -52,7 +52,7 @@ export default {
   },
 
   mounted() {
-    axios('http://localhost:5000/').then(response => {
+    axios('http://104.156.227.73:5000/').then(response => {
       console.log(response)
       this.flask = JSON.stringify(response)
     })
